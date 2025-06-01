@@ -46,7 +46,7 @@ Add this script to your Webflow project's head:
 <script>
   function onErrorLoader() {
     const script = document.createElement("script");
-    script.src = "{YOUR VERCEL PROJECT URL/app.js}";
+    script.src = "https://pg-ten-lyart.vercel.app/app.js";
     script.defer = "true";
     document.head.appendChild(script);
   }
@@ -68,11 +68,11 @@ Add these stylesheets to your Webflow project:
 <link
   rel="stylesheet"
   href="http://localhost:6545/styles/out.css"
-  onerror="this.onerror=null;this.href='{YOUR VERCEL PROJECT URL}/styles/out.css'"
+  onerror="this.onerror=null;this.href="'https://pg-ten-lyart.vercel.app/styles/out.css'"
 />
 
 <!-- Designer CSS -->
-<link rel="stylesheet" href="{YOUR VERCEL PROJECT URL}/styles/out.css" />
+<link rel="stylesheet" href="https://pg-ten-lyart.vercel.app/styles/out.css" />
 <link rel="stylesheet" href="http://localhost:6545/styles/index.css" />
 ```
 
