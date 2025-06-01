@@ -1,0 +1,24 @@
+{
+  "name": "webflow-dev-setup",
+  "module": "index.ts",
+  "license": "CC-BY-4.0",
+  "devDependencies": {
+    "bun": "^1.1.45",
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "dev": "bun --watch run bin/dev.ts",
+    "bundle": "NODE_ENV=production bun run bin/build.ts",
+    "api": "bun --watch run bin/api.ts",
+    "all": "bun run bin/all.ts"
+  },
+  "type": "module",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bun"
+    ]
+  }
+}
