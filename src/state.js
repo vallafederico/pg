@@ -19,14 +19,14 @@ export class State {
 
     this.wrappers.forEach((wrapper, index) => {
       gsap.set(wrapper, {
-        yPercent: 99,
+        yPercent: 100,
         autoAlpha: 1,
       });
     });
 
     gsap.set(this.ui, {
       autoAlpha: 1,
-      yPercent: 99,
+      yPercent: 200,
     });
   }
 
@@ -55,7 +55,7 @@ export class State {
     });
 
     gsap.to(this.ui, {
-      yPercent: 99,
+      yPercent: 200,
       duration: 0.8,
     });
 

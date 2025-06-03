@@ -1,8 +1,11 @@
 import { createModules } from "./modules/_/create";
 import { Scroll } from "./scroll";
 import { State } from "./state";
+import { Slider } from "./slider";
 
 const modules = createModules();
+
+const slider = new Slider();
 // console.log("---", modules);
 
 export class App {
