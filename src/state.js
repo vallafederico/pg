@@ -1,4 +1,5 @@
 import gsap from "./gsap";
+import { Slider } from "./slider";
 
 export class State {
   wrappers = [...document.querySelectorAll("[data-item='wrapper']")];
@@ -32,6 +33,8 @@ export class State {
 
   open(index) {
     this.current = index;
+
+    Slider.target = Slider.current = -index;
 
     gsap.to(this.wrappers[index], {
       yPercent: 0,

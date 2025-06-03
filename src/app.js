@@ -5,12 +5,9 @@ import { Slider } from "./slider";
 
 const modules = createModules();
 
-const slider = new Slider();
-// console.log("---", modules);
-
 export class App {
   constructor() {
-    console.log("App2");
+    // console.log("App2");
 
     this.state = new State();
   }
