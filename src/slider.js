@@ -15,10 +15,6 @@ export class _Slider extends Core {
     arrows.children[1].onclick = () => this.goToNext();
 
     gsap.ticker.add(this.animate.bind(this));
-
-    // queueMicrotask(() => {
-    //   console.log(this.items);
-    // });
   }
 
   animate() {
@@ -26,7 +22,6 @@ export class _Slider extends Core {
   }
 
   onSlideChange = (index) => {
-    console.log(index);
     hey.SLIDE = index;
   };
 }

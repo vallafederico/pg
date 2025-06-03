@@ -1,18 +1,36 @@
 import gsap from "./gsap";
 import { Slider } from "./slider";
+import hey from "./hey";
 
 export class State {
   wrappers = [...document.querySelectorAll("[data-item='wrapper']")];
   triggers = [...document.querySelectorAll("[data-item='trigger']")];
   closes = [...document.querySelectorAll("[data-item='close']")];
+  bg = document.querySelector("[data-item='bg']");
   ui = document.querySelector("[data-ui]");
   nav = document.querySelector("[data-nav]");
   current = null;
+
+  #change = hey.on("SLIDE", (index) => {
+    gsap.to(this.wrappers[this.current], {
+      autoAlpha: 0,
+      duration: 0.2,
+    });
+
+    this.current = index;
+
+    gsap.to(this.wrappers[index], {
+      autoAlpha: 1,
+      duration: 0.2,
+    });
+  });
 
   constructor() {
     this.closes.forEach((close, index) => {
       close.onclick = this.close.bind(this, index);
     });
+
+    console.log(this.bg);
 
     this.triggers.forEach((trigger, index) => {
       trigger.onclick = this.open.bind(this, index);
@@ -20,9 +38,12 @@ export class State {
 
     this.wrappers.forEach((wrapper, index) => {
       gsap.set(wrapper, {
-        yPercent: 100,
-        autoAlpha: 1,
+        autoAlpha: 0,
       });
+    });
+
+    gsap.set(this.bg, {
+      yPercent: 100,
     });
 
     gsap.set(this.ui, {
@@ -37,6 +58,11 @@ export class State {
     Slider.target = Slider.current = -index;
 
     gsap.to(this.wrappers[index], {
+      autoAlpha: 1,
+      duration: 0.8,
+    });
+
+    gsap.to(this.bg, {
       yPercent: 0,
       duration: 0.8,
     });
@@ -51,8 +77,13 @@ export class State {
   }
 
   close() {
+    gsap.to(this.bg, {
+      yPercent: 100,
+      duration: 0.8,
+    });
+
     gsap.to(this.wrappers[this.current], {
-      yPercent: 99,
+      autoAlpha: 0,
       duration: 0.8,
       delay: 0.05,
     });
