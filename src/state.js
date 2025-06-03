@@ -30,8 +30,6 @@ export class State {
       close.onclick = this.close.bind(this, index);
     });
 
-    console.log(this.bg);
-
     this.triggers.forEach((trigger, index) => {
       trigger.onclick = this.open.bind(this, index);
     });
@@ -63,7 +61,7 @@ export class State {
     });
 
     gsap.to(this.bg, {
-      yPercent: 0,
+      yPercent: -100,
       duration: 0.8,
     });
 
