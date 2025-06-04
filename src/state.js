@@ -6,6 +6,7 @@ export class State {
   wrappers = [...document.querySelectorAll("[data-item='wrapper']")];
   triggers = [...document.querySelectorAll("[data-item='trigger']")];
   closes = [...document.querySelectorAll("[data-item='close']")];
+  images = [...document.querySelectorAll("[data-item='img']")];
   bg = document.querySelector("[data-item='bg']");
   ui = document.querySelector("[data-ui]");
   nav = document.querySelector("[data-nav]");
@@ -48,6 +49,10 @@ export class State {
       autoAlpha: 1,
       yPercent: 200,
     });
+
+    gsap.set(this.images, {
+      clipPath: "inset(100% 0% 0% 0%)",
+    });
   }
 
   open(index) {
@@ -71,6 +76,17 @@ export class State {
       delay: 0.1,
     });
 
+    gsap.to(this.images[index], {
+      clipPath: "inset(0% 0% 0% 0%)",
+      duration: 0.8,
+      delay: 0.3,
+      onComplete: () => {
+        gsap.set(this.images, {
+          clipPath: "inset(0% 0% 0% 0%)",
+        });
+      },
+    });
+
     this.nav.classList.add("is-open");
   }
 
@@ -78,6 +94,11 @@ export class State {
     gsap.to(this.bg, {
       yPercent: 100,
       duration: 0.8,
+      onComplete: () => {
+        gsap.set(this.images, {
+          clipPath: "inset(100% 0% 0% 0%)",
+        });
+      },
     });
 
     gsap.to(this.wrappers[this.current], {
